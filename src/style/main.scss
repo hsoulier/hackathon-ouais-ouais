@@ -8,6 +8,7 @@
   &__outer {
     @apply absolute top-0 left-0;
     transform: translate3d(-50%, -50%, 0);
+    pointer-events: none;
   }
   &__inner {
     width: 1rem;
