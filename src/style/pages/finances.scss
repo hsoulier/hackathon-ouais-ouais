@@ -1,0 +1,112 @@
+body{
+    background-color: #E8EEF2;
+}
+.container{
+    position: relative;
+    color: #343444;
+    -webkit-box-shadow: 0 32px 48px 0 rgb(52 52 52 / 8%);
+    box-shadow: 0 32px 48px 0 rgb(52 52 52 / 8%);
+    position: fixed;
+    padding: 5%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 80vh;
+    background-color: #FAFAFA; 
+    width: 80vw;
+    margin: 0 auto;
+    border-radius: 20px;
+    display: flex;
+    &__menu{
+        flex: 0 0 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        &__avatar{
+            width: 50%;
+            img{
+                width: 100%;
+            }
+        }
+        .btnNav{
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+            align-items: center;
+            a{
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                height: 50px;
+                border-radius: 10px;
+                background-color: #ECECEE;
+                svg{
+                    width: 50%;
+                    fill: #C4C5D0;
+                }
+                &.active{
+                    background-color: #666CFD;
+                    svg{
+                        fill : #FFFFFF;
+                    }
+                }
+            }
+        }
+    }
+    hr{
+        height: 100%;
+        border: 1px solid #E0DFE4;
+        margin: 0 5%;
+    }
+    &__dashboard{
+        flex: 0 0 80%;
+        overflow: auto;
+        #dashboard {
+            width: 100%;
+            grid-gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            article{
+                padding: 10%;
+                background-color: white;
+                border-radius: 20px;
+                -webkit-box-shadow: 0 10px 48px 0 rgb(52 52 52 / 8%);
+                box-shadow: 0 10px 48px 0 rgb(52 52 52 / 8%);
+                .article{
+                    &__header{
+                        gap: 15px;
+                        display: flex;
+                        &__info{
+                            h2{
+                                margin: 0;
+                            }
+                            .symbole{
+                                font-style: italic;
+                            }
+                        }
+                    }
+                    &__evolution{
+                        p.price{
+                            font-weight: bold;
+                            font-size: 21px;
+                        }
+                    }
+                }
+                .percent_change_24h {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+
+                    svg {
+                        width: 24px;
+                        fill: #666CFD;
+                    }
+                }
+            }
+        }
+    }
+}
