@@ -2,15 +2,7 @@
 module.exports = {
   content: ["./*.html"],
   theme: {
-    extend: {
-      colors: {
-        black: "#333333",
-        "dark-orange": "#FD5200",
-      },
-      fontFamily: {
-        sans: ["Clash Display", "sans-serif"],
-      },
-    },
+    extend: {},
   },
   plugins: [],
 }
