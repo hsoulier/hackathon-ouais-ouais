@@ -85,7 +85,7 @@ body {
             }
         }
         &__crypto {
-            #dashboard {
+            #dashboard_content {
                 width: 100%;
                 grid-gap: 15px;
                 display: grid;
@@ -165,11 +165,11 @@ body {
                 &__content {
                     display: flex;
                     justify-content: space-between;
+                    gap: 20px;
                     .account__card {
                         display: flex;
                         gap: 20px;
                         align-items: center;
-                        width: 30%;
                         padding: 2% 5%;
                         background-color: white;
                         border-radius: 20px;

@@ -1,5 +1,5 @@
 import jsonAccount from "../../assets/json/myAccount.json"
-let dashboard = document.querySelector("#dashboard");
+let dashboard = document.querySelector("#dashboard_content");
 let tabAccount = document.querySelector("#tableAccount tbody");
 let selectCrypto = document.querySelector("#crypto");
 let variationWallet = 0;
@@ -106,7 +106,7 @@ function total(){
     totalCount = totalCount + totalInfo;
     totalPrice += parseFloat(element.querySelector(".total").innerHTML);
     
-    document.querySelector(".totalInfo").innerHTML = "$ " + totalPrice;
+    document.querySelector(".totalInfo").innerHTML = "$ " + totalPrice.toFixed(2);
     
     totalWalletPrice += element.querySelector(".quantity").innerHTML * element.querySelector(".price").innerHTML;
     element.querySelector(".total").innerHTML = totalWalletPrice.toFixed(2);
@@ -129,7 +129,7 @@ submitBtn.addEventListener('click', (e) => {
 
       if(moneySelector.value == cryptoWalletName) {
         // if(moneyInput.value < element.getElementsByTagName("td")[2].innerHTML) {
-          element.getElementsByTagName("td")[2].innerHTML = element.getElementsByTagName("td")[2].innerHTML - moneyInput.value;
+          element.getElementsByTagName("td")[2].innerHTML = parseFloat(element.getElementsByTagName("td")[2].innerHTML - moneyInput.value).toFixed(2);
           total();
         // } else {
         //   alert("Vous n'avez pas les fonds nécessaires");
