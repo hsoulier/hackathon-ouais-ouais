@@ -1,7 +1,6 @@
 import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 
 const scene = new THREE.Scene()
 
@@ -18,7 +17,6 @@ scene.add(axesHelper)
 const light = new THREE.PointLight(0xffe75d, 1, 2000)
 light.position.set(-4.5, 6.5, 2)
 scene.add(light)
-
 
 camera.position.x = 15
 camera.position.y = 12
@@ -57,7 +55,7 @@ loader.load(
     console.log((xhr.loaded / xhr.total) * 100 + "% loaded")
   },
   // called when loading has errors
-  function (error) {
+  function () {
     console.log("An error happened")
   }
 )
