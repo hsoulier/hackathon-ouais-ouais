@@ -41,7 +41,7 @@ const getData = async () => {
             tabCryptoAccount.forEach((element,i) =>{
               if(element.innerHTML === cryptos.name){
                 tabCryptoAccountPrice[i].innerHTML = cryptos.quotes.USD.price;
-                variationCrypto += cryptos.quotes.USD.percent_change_24h;
+                //variationCrypto += cryptos.quotes.USD.percent_change_24h;
               }
               
             })
