@@ -2,6 +2,7 @@ import jsonAccount from "../../assets/json/myAccount.json"
 let dashboard = document.querySelector("#dashboard");
 let tabAccount = document.querySelector("#tableAccount tbody");
 let selectCrypto = document.querySelector("#crypto");
+let variationWallet = 0;
 let url = "https://api.alternative.me/v2/ticker/";
 
 let data = [];
@@ -39,13 +40,16 @@ const getData = async () => {
             let tabCryptoAccount = document.querySelectorAll(".name");
             let tabCryptoAccountPrice = document.querySelectorAll(".price");
             tabCryptoAccount.forEach((element,i) =>{
+              let priceCrypto = cryptos.quotes.USD.price
               if(element.innerHTML === cryptos.name){
-                tabCryptoAccountPrice[i].innerHTML = cryptos.quotes.USD.price;
-                //variationCrypto += cryptos.quotes.USD.percent_change_24h;
+                tabCryptoAccountPrice[i].innerHTML = priceCrypto;
+                let pourcent = -(cryptos.quotes.USD.percent_change_24h) / 100;
+                if(cryptos.quotes.USD.percent_change_24h < 0) variationWallet -= pourcent * priceCrypto;
+                else variationWallet += (priceCrypto * cryptos.quotes.USD.percent_change_24h) / 100;
               }
-              
             })
           });
+          document.querySelector(".variation__Wallet").innerHTML = "$ " + parseFloat(variationWallet).toFixed(2);
           total();
           setTimeout(() => {
             total();
@@ -96,7 +100,7 @@ function total(){
   let totalPrice = 0;
   document.querySelector(".totalInfo").innerHTML = 0;
   tabTable.forEach(element =>{
-    let totalWallerPrice = 0;
+    let totalWalletPrice = 0;
     let totalCount = 0;
     let totalInfo = document.querySelector(".totalInfo").innerHTML;
     totalCount = totalCount + totalInfo;
@@ -104,8 +108,8 @@ function total(){
     
     document.querySelector(".totalInfo").innerHTML = "$ " + totalPrice;
     
-    totalWallerPrice += element.querySelector(".quantity").innerHTML * element.querySelector(".price").innerHTML;
-    element.querySelector(".total").innerHTML = totalWallerPrice.toFixed(2);
+    totalWalletPrice += element.querySelector(".quantity").innerHTML * element.querySelector(".price").innerHTML;
+    element.querySelector(".total").innerHTML = totalWalletPrice.toFixed(2);
   });
 }
 

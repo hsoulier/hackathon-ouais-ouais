@@ -242,6 +242,12 @@ body {
                 form {
                     display: flex;
                     gap: 20px;
+
+                    select {
+                        background-color: unset;
+                        border: unset;
+                        color: #282939;
+                    }
                     
                     .form_fields {
                         background-color: #ececee;
@@ -264,12 +270,6 @@ body {
     
                         input {
                             all: unset;
-                        }
-
-                        select {
-                            background-color: unset;
-                            border: unset;
-                            color: #282939;
                         }
 
                     }                    
