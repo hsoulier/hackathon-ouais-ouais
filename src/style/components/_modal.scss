@@ -1,9 +1,7 @@
 .modal {
   position: fixed;
-  width: 80vw;
-  height: 80vh;
-  opacity: 0;
-  visibility: hidden;
+  width: 100vw;
+  height: 100vh;
   transition: all 0.3s ease;
   top: 50%;
   left: 50%;
@@ -11,7 +9,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+  // opacity: 0;
+  // visibility: hidden;
+  // pointer-events: none;
 
   &.open {
     visibility: visible;
@@ -19,21 +19,52 @@
     transition-delay: 0s;
     pointer-events: all;
   }
-  &-container {
-    background: #fff;
-    position: relative;
-    padding: 1rem;
+
+  &__bg {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
   }
-  &-close {
-    position: absolute;
-    right: 15px;
-    top: 15px;
+
+  &__container {
+    background-color: theme("colors.black");
+    position: relative;
+    // padding: 1rem;
+    overflow: scroll;
+    width: 80vw;
+    height: 80vh;
+    &-inner {
+      height: auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+  }
+  [data-content] {
+    padding: 3rem 3rem 3rem 0;
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1rem;
+  }
+  &__close {
+    position: fixed;
+    right: calc(10vw + 1rem);
+    top: calc(10vh + 1rem);
+    padding: 0.25rem;
+    line-height: 1;
+    border: 2px solid theme("colors.dark-orange");
     outline: none;
     appearance: none;
-    color: theme("colors.black");
+    color: theme("colors.dark-orange");
     background: none;
-    border: 0px;
     font-weight: bold;
     cursor: pointer;
+  }
+  &__menu {
+    height: 80vh;
+    position: sticky;
+    top: 0;
   }
 }

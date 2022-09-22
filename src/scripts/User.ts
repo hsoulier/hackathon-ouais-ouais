@@ -11,10 +11,13 @@ export default class {
   async getWallet() {
     try {
       const balance = await this.provider.getBalance(this.address)
+      console.log(balance)
+
       const balanceInEth = ethers.utils.formatEther(balance)
-      console.log(`balance: ${balanceInEth} ETH`)
+      return balanceInEth
     } catch (error) {
       console.error(error)
+      return 0
     }
   }
 
@@ -29,8 +32,10 @@ export default class {
           )} ETH`
         )
       })
+      return history
     } catch (error) {
       console.error(error)
+      return []
     }
   }
 }

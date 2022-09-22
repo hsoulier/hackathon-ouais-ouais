@@ -4,7 +4,11 @@ import gsap from "gsap"
 import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 
+// HTML Elements
 const canvas = document.querySelector("canvas")!
+const $loading = document.getElementById("loader")!
+const $modal = document.getElementById("dashboard")!
+
 const scene = new THREE.Scene()
 const raycaster = new THREE.Raycaster()
 let currentIntersect: any = null
@@ -23,8 +27,6 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(15, 12, 15)
 // camera.quaternion.setFromEuler(new THREE.Euler(-0.25, -0.79, -0.18))
 
-const $loading = document.getElementById("loader")!
-const $modal = document.getElementById("dashboard")!
 // Spline scene
 const loader = new SplineLoader()
 loader.load(
@@ -45,7 +47,6 @@ loader.load(
 // Elements for raycaster
 const geometry = new THREE.BoxGeometry(9, 6, 0.5)
 const material = new THREE.MeshBasicMaterial({
-  color: 0xffffff,
   opacity: 0,
   transparent: true,
 })
@@ -117,9 +118,13 @@ window.addEventListener("click", () => {
 
 const exits = document.querySelectorAll(".modal-exit")
 exits.forEach((exit) => {
-  exit.addEventListener("click", (event) => {
-    event.preventDefault()
-    const modal = exit.parentElement?.parentElement as HTMLElement
-    modal.classList.remove("open")
-  })
+  exit.addEventListener(
+    "click",
+    (event) => {
+      event.preventDefault()
+      const modal = exit.parentElement?.parentElement as HTMLElement
+      if (modal.classList.contains("open")) modal.classList.remove("open")
+    },
+    true
+  )
 })

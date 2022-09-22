@@ -3,6 +3,7 @@
 @tailwind utilities;
 @import "./base/variable", "./base/reset";
 @import "./components/modal", "./components/finance";
+@import "./pages/finance";
 
 .cursor {
   &__inner,
@@ -24,17 +25,5 @@
     border: 1px solid var(--clr-black);
     border-radius: 999px;
     z-index: 999;
-  }
-}
-
-#app {
-  @apply grid w-full;
-  height: calc(100 * var(--vh));
-  place-content: center;
-  h1 {
-    @apply text-center mx-auto font-bold;
-    width: 70%;
-    font-size: 5vw;
-    font-weight: 700;
   }
 }

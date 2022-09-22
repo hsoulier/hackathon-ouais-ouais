@@ -21,6 +21,7 @@
     "vite": "^3"
   },
   "dependencies": {
+    "@binance/connector": "^1.13.0",
     "@splinetool/loader": "^0.9.108",
     "ethers": "^5.7.1",
     "gsap": "^3.8.0",

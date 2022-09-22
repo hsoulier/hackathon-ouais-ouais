@@ -1,286 +1,278 @@
-body {
-  background-color: #e8eef2;
-}
-.container {
-  font-family: BlinkMacSystemFont;
-  color: #282939;
-  -webkit-box-shadow: 0 32px 48px 0 rgb(52 52 52 / 8%);
-  box-shadow: 0 32px 48px 0 rgb(52 52 52 / 8%);
-  position: fixed;
-  padding: 5%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  height: 70vh;
-  background-color: #fafafa;
-  width: 80vw;
-  margin: 0 auto;
-  border-radius: 20px;
-  display: flex;
-  &__menu {
-    flex: 0 0 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    &__avatar {
-      width: 50%;
-      cursor: pointer;
-      img {
-        width: 100%;
-      }
-    }
-    .btnNav {
-      width: 100%;
-      display: flex;
-      gap: 20px;
-      flex-direction: column;
-      align-items: center;
-      a,
-      p {
-        margin: 0;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        height: 50px;
-        border-radius: 10px;
-        background-color: #ececee;
-        svg {
-          width: 50%;
-          fill: #c4c5d0;
-        }
-        &.active {
-          background-color: #666cfd;
-          svg {
-            fill: #ffffff;
-          }
-        }
-        &:hover {
-          background-color: #666cfd;
-          opacity: 0.3;
-        }
-      }
-    }
-  }
-  hr {
-    height: 100%;
-    border: 1px solid #e0dfe4;
-    margin: 0 5%;
-  }
-  &__dashboard {
-    flex: 0 0 80%;
-    position: relative;
-    .dashboardSettings {
-      overflow: scroll;
-      transition: 0.5s all;
-      position: absolute;
-      width: 100%;
-      opacity: 0;
-      height: 90%;
-      &.active {
-        opacity: 1;
-        z-index: 3;
-      }
-    }
-    &__crypto {
-      #dashboard {
-        width: 100%;
-        grid-gap: 15px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+// body {
+//   background-color: #e8eef2;
+// }
+// .container {
+//   color: #282939;
+//   // -webkit-box-shadow: 0 32px 48px 0 rgb(52 52 52 / 8%);
+//   // box-shadow: 0 32px 48px 0 rgb(52 52 52 / 8%);
+//   background-color: #fafafa;
+//   margin: 0 auto;
+//   border-radius: 20px;
+//   display: flex;
+//   &__menu {
+//     flex: 0 0 10%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     align-items: center;
+//     &__avatar {
+//       width: 50%;
+//       cursor: pointer;
+//       img {
+//         width: 100%;
+//       }
+//     }
+//     .btnNav {
+//       width: 100%;
+//       display: flex;
+//       gap: 20px;
+//       flex-direction: column;
+//       align-items: center;
+//       a,
+//       p {
+//         margin: 0;
+//         cursor: pointer;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         width: 50px;
+//         height: 50px;
+//         border-radius: 10px;
+//         background-color: #ececee;
+//         svg {
+//           width: 50%;
+//           fill: #c4c5d0;
+//         }
+//         &.active {
+//           background-color: #666cfd;
+//           svg {
+//             fill: #ffffff;
+//           }
+//         }
+//         &:hover {
+//           background-color: #666cfd;
+//           opacity: 0.3;
+//         }
+//       }
+//     }
+//   }
+//   hr {
+//     height: 100%;
+//     border: 1px solid #e0dfe4;
+//     margin: 0 5%;
+//   }
+//   &__dashboard {
+//     flex: 0 0 80%;
+//     position: relative;
+//     .dashboardSettings {
+//       overflow: scroll;
+//       transition: 0.5s all;
+//       position: absolute;
+//       width: 100%;
+//       opacity: 0;
+//       height: 90%;
+//       &.active {
+//         opacity: 1;
+//         z-index: 3;
+//       }
+//     }
+//     &__crypto {
+//       #dashboard {
+//         width: 100%;
+//         grid-gap: 15px;
+//         display: grid;
+//         grid-template-columns: repeat(3, 1fr);
 
-        article {
-          padding: 5%;
-          background-color: white;
-          border-radius: 20px;
-          -webkit-box-shadow: 0 5px 5px 0 rgb(52 52 52 / 8%);
-          box-shadow: 0 5px 5px 0 rgb(52 52 52 / 8%);
+//         article {
+//           padding: 5%;
+//           background-color: white;
+//           border-radius: 20px;
+//           -webkit-box-shadow: 0 5px 5px 0 rgb(52 52 52 / 8%);
+//           box-shadow: 0 5px 5px 0 rgb(52 52 52 / 8%);
 
-          .article {
-            &__header {
-              gap: 15px;
-              display: flex;
+//           .article {
+//             &__header {
+//               gap: 15px;
+//               display: flex;
 
-              &__img {
-                width: 40px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: rgba(102, 103, 253, 0.2);
-                border-radius: 5px;
+//               &__img {
+//                 width: 40px;
+//                 height: 40px;
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: center;
+//                 background-color: rgba(102, 103, 253, 0.2);
+//                 border-radius: 5px;
 
-                img {
-                  width: 60%;
-                }
-              }
+//                 img {
+//                   width: 60%;
+//                 }
+//               }
 
-              &__info {
-                h2 {
-                  margin: 0;
-                }
+//               &__info {
+//                 h2 {
+//                   margin: 0;
+//                 }
 
-                .symbole {
-                  font-style: italic;
-                }
-              }
-            }
+//                 .symbole {
+//                   font-style: italic;
+//                 }
+//               }
+//             }
 
-            &__information {
-              display: flex;
-              justify-content: space-between;
+//             &__information {
+//               display: flex;
+//               justify-content: space-between;
 
-              &__evolution {
-                p.priceCrypto {
-                  font-weight: bold;
-                  font-size: 21px;
-                }
-                p.evolution {
-                  font-style: italic;
-                  margin: 0 0 3% 0;
-                  font-size: 12px;
-                }
-              }
-            }
-          }
+//               &__evolution {
+//                 p.priceCrypto {
+//                   font-weight: bold;
+//                   font-size: 21px;
+//                 }
+//                 p.evolution {
+//                   font-style: italic;
+//                   margin: 0 0 3% 0;
+//                   font-size: 12px;
+//                 }
+//               }
+//             }
+//           }
 
-          .percent_change_24h {
-            display: flex;
-            align-items: center;
-            gap: 5px;
+//           .percent_change_24h {
+//             display: flex;
+//             align-items: center;
+//             gap: 5px;
 
-            svg {
-              width: 24px;
-              fill: #666cfd;
-            }
-          }
-        }
-      }
-    }
-    &__account {
-      .crypto__summary {
-        margin-bottom: 10%;
-        &__content {
-          display: flex;
-          justify-content: space-between;
-          .account__card {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            width: 30%;
-            padding: 2% 5%;
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 5px 5px 0 rgb(52 52 52 / 8%);
-            p {
-              margin: 0;
-              &:first-child {
-                font-weight: bold;
-              }
-            }
-            &__picto {
-              width: 40px;
-              height: 40px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              background-color: rgba(102, 103, 253, 0.2);
-              border-radius: 5px;
-              img {
-                width: 60%;
-              }
-            }
-          }
-        }
-      }
-      .crypto__myAccount {
-        margin-bottom: 10%;
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          border-radius: 20px;
-          overflow: hidden;
-          padding: 0 10px;
-          box-shadow: 0 5px 5px 0 rgb(52 52 52 / 8%);
-          thead {
-            background-color: #666cfd;
-            tr {
-              text-align: left;
-              th {
-                padding: 10px;
-                color: #fff;
-              }
-            }
-          }
-          tbody {
-            tr {
-              text-align: left;
+//             svg {
+//               width: 24px;
+//               fill: #666cfd;
+//             }
+//           }
+//         }
+//       }
+//     }
+//     &__account {
+//       .crypto__summary {
+//         margin-bottom: 10%;
+//         &__content {
+//           display: flex;
+//           justify-content: space-between;
+//           .account__card {
+//             display: flex;
+//             gap: 20px;
+//             align-items: center;
+//             width: 30%;
+//             padding: 2% 5%;
+//             background-color: white;
+//             border-radius: 20px;
+//             box-shadow: 0 5px 5px 0 rgb(52 52 52 / 8%);
+//             p {
+//               margin: 0;
+//               &:first-child {
+//                 font-weight: bold;
+//               }
+//             }
+//             &__picto {
+//               width: 40px;
+//               height: 40px;
+//               display: flex;
+//               align-items: center;
+//               justify-content: center;
+//               background-color: rgba(102, 103, 253, 0.2);
+//               border-radius: 5px;
+//               img {
+//                 width: 60%;
+//               }
+//             }
+//           }
+//         }
+//       }
+//       .crypto__myAccount {
+//         margin-bottom: 10%;
+//         table {
+//           width: 100%;
+//           border-collapse: collapse;
+//           border-radius: 20px;
+//           overflow: hidden;
+//           padding: 0 10px;
+//           box-shadow: 0 5px 5px 0 rgb(52 52 52 / 8%);
+//           thead {
+//             background-color: #666cfd;
+//             tr {
+//               text-align: left;
+//               th {
+//                 padding: 10px;
+//                 color: #fff;
+//               }
+//             }
+//           }
+//           tbody {
+//             tr {
+//               text-align: left;
 
-              &:nth-child(2n) {
-                background-color: #f2f2f2;
-              }
-              th {
-                color: #808494;
-                padding: 10px;
-              }
-              td {
-                color: #8b8c91;
-                padding: 10px;
-              }
-              &:not(first-child) {
-                background-color: white;
-                border-radius: 20px;
-                box-shadow: 0 5px 5px 0 rgb(52 52 52 / 8%);
-              }
-            }
-          }
-        }
-      }
-      .crypto__virement {
-        form {
-          display: flex;
-          gap: 20px;
+//               &:nth-child(2n) {
+//                 background-color: #f2f2f2;
+//               }
+//               th {
+//                 color: #808494;
+//                 padding: 10px;
+//               }
+//               td {
+//                 color: #8b8c91;
+//                 padding: 10px;
+//               }
+//               &:not(first-child) {
+//                 background-color: white;
+//                 border-radius: 20px;
+//                 box-shadow: 0 5px 5px 0 rgb(52 52 52 / 8%);
+//               }
+//             }
+//           }
+//         }
+//       }
+//       .crypto__virement {
+//         form {
+//           display: flex;
+//           gap: 20px;
 
-          .form_fields {
-            background-color: #ececee;
-            border-radius: 10px;
-            padding: 10px;
+//           .form_fields {
+//             background-color: #ececee;
+//             border-radius: 10px;
+//             padding: 10px;
 
-            input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-              -webkit-appearance: none;
-              margin: 0;
-            }
-            input[type="number"] {
-              -moz-appearance: textfield;
-              border-right: 1px solid #b2b2b2;
+//             input::-webkit-outer-spin-button,
+//             input::-webkit-inner-spin-button {
+//               -webkit-appearance: none;
+//               margin: 0;
+//             }
+//             input[type="number"] {
+//               -moz-appearance: textfield;
+//               border-right: 1px solid #b2b2b2;
 
-              &::placeholder {
-                color: #b2b2b2;
-              }
-            }
+//               &::placeholder {
+//                 color: #b2b2b2;
+//               }
+//             }
 
-            input {
-              all: unset;
-            }
+//             input {
+//               all: unset;
+//             }
 
-            select {
-              background-color: unset;
-              border: unset;
-              color: #282939;
-            }
-          }
-          input[type="submit"] {
-            box-sizing: border-box;
-            border: 2px solid #666cfd;
-            background-color: unset;
-            padding: 10px 40px;
-            border-radius: 10px;
-          }
-        }
-      }
-    }
-  }
-}
+//             select {
+//               background-color: unset;
+//               border: unset;
+//               color: #282939;
+//             }
+//           }
+//           input[type="submit"] {
+//             box-sizing: border-box;
+//             border: 2px solid #666cfd;
+//             background-color: unset;
+//             padding: 10px 40px;
+//             border-radius: 10px;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
