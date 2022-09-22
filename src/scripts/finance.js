@@ -2,14 +2,15 @@ import jsonAccount from "../../assets/json/myAccount.json"
 let dashboard = document.querySelector("#dashboard");
 let tabAccount = document.querySelector("#tableAccount tbody");
 let selectCrypto = document.querySelector("#crypto");
-
 let url = "https://api.alternative.me/v2/ticker/";
+
+let data = [];
 
 const getData = async () => {
   try {
       let response = await fetch(url)
       if(response.ok) {
-          let data = await response.json(); 
+          data = await response.json(); 
           Object.values(data.data).map((cryptos,round) => {
             if (round < 9) {
               dashboard.innerHTML += `
@@ -40,6 +41,7 @@ const getData = async () => {
             tabCryptoAccount.forEach((element,i) =>{
               if(element.innerHTML === cryptos.name){
                 tabCryptoAccountPrice[i].innerHTML = cryptos.quotes.USD.price;
+                variationCrypto += cryptos.quotes.USD.percent_change_24h;
               }
               
             })
@@ -47,7 +49,7 @@ const getData = async () => {
           total();
           setTimeout(() => {
             total();
-          }, 5000);
+          }, 300);
       } else {
           console.error('Retour du serveur : ', response.status)
       }
@@ -61,7 +63,7 @@ const getCrypto = async() =>{
     tabAccount.innerHTML += `
       <tr class="wallet">
           <td class="name">${element.name}</td>
-          <td class="price">120</td>
+          <td class="price"></td>
           <td class="quantity">${element.quantity}</td>
           <td class="total"></td>
       </tr>
@@ -91,17 +93,19 @@ dash.forEach(function (items,i){
 //set up total
 function total(){
   let tabTable = document.querySelectorAll(".wallet");
+  let totalPrice = 0;
+  document.querySelector(".totalInfo").innerHTML = 0;
   tabTable.forEach(element =>{
+    let totalWallerPrice = 0;
     let totalCount = 0;
     let totalInfo = document.querySelector(".totalInfo").innerHTML;
-    console.log(totalInfo);
     totalCount = totalCount + totalInfo;
-    //console.log(totalCount);
-    // totalInfo += element.querySelector(".total").innerHTML;
-    // console.log(totalInfo);
-    document.querySelector(".totalInfo").innerHTML += element.querySelector(".total").innerHTML;
+    totalPrice += parseFloat(element.querySelector(".total").innerHTML);
     
-    element.querySelector(".total").innerHTML = element.querySelector(".quantity").innerHTML * element.querySelector(".price").innerHTML;
+    document.querySelector(".totalInfo").innerHTML = "$ " + totalPrice;
+    
+    totalWallerPrice += element.querySelector(".quantity").innerHTML * element.querySelector(".price").innerHTML;
+    element.querySelector(".total").innerHTML = totalWallerPrice.toFixed(2);
   });
 }
 
@@ -132,3 +136,4 @@ submitBtn.addEventListener('click', (e) => {
     alert("Veuillez compléter les champs du formulaire");
   }
 })
+
