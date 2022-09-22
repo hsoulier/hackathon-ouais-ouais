@@ -23,11 +23,14 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(15, 12, 15)
 // camera.quaternion.setFromEuler(new THREE.Euler(-0.25, -0.79, -0.18))
 
+const $loading = document.getElementById("loader")!
+const $modal = document.getElementById("dashboard")!
 // Spline scene
 const loader = new SplineLoader()
 loader.load(
   "https://prod.spline.design/AwrDHewpN5-KqwLR/scene.splinecode",
   (splineScene) => {
+    $loading.style.opacity = "0"
     const SCALE = 0.01
     splineScene.scale.set(SCALE, SCALE, SCALE)
     splineScene.rotation.y = Math.PI / 2
@@ -35,9 +38,7 @@ loader.load(
   },
   (xhr) => {
     const percent = (xhr.loaded / xhr.total) * 100
-    const $loading = document.getElementById("loader")!
     $loading.textContent = `${percent.toFixed(1)}%`
-    $loading.classList.add("opacity-0", "pointer-events-none")
   }
 )
 
@@ -82,19 +83,7 @@ const animate = () => {
   raycaster.setFromCamera(pointer, camera)
   const objectsToTest = [bigScreen]
   const intersects = raycaster.intersectObjects(objectsToTest)
-
-  if (intersects.length) {
-    if (!currentIntersect) {
-      console.log("mouse enter")
-    }
-
-    currentIntersect = intersects[0]
-  } else {
-    if (currentIntersect) {
-      console.log("mouse leave")
-    }
-    currentIntersect = null
-  }
+  currentIntersect = intersects.length ? intersects[0] : null
   renderer.render(scene, camera)
 }
 const render = () => {
@@ -118,10 +107,19 @@ window.addEventListener("click", () => {
   if (currentIntersect) {
     switch (currentIntersect.object) {
       case bigScreen:
-        bigScreen.material.color.set("#ff0000")
+        $modal.classList.add("open")
         break
       default:
         break
     }
   }
+})
+
+const exits = document.querySelectorAll(".modal-exit")
+exits.forEach((exit) => {
+  exit.addEventListener("click", (event) => {
+    event.preventDefault()
+    const modal = exit.parentElement?.parentElement as HTMLElement
+    modal.classList.remove("open")
+  })
 })

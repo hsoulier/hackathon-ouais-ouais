@@ -4,7 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        black: "#333333",
         "dark-orange": "#FD5200",
+      },
+      fontFamily: {
+        sans: ["Clash Display", "sans-serif"],
       },
     },
   },
