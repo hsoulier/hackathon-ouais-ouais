@@ -1,0 +1,15 @@
+.resume{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around
+}
+
+.resume div{
+  padding: 25px;
+  margin: 25px;
+}
+
+#drawerbar{
+  padding: 25px 0;
+  margin: 25px 0;
+}
