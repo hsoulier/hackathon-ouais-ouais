@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import "./base/variable", "./base/reset";
-@import "./components/modal";
+@import "./components/modal", "./components/finance";
 
 .cursor {
   &__inner,
