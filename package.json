@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite --host",
     "config": "vite --config my-config.js",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "serve": "vite preview"
   },
   "devDependencies": {
