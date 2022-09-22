@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script type="module" src="/src/scripts/index.ts" defer></script> -->
+    <script type="module" src="/src/scripts/spline.ts" defer></script>
+    <title>Boilerplate Front</title>
+  </head>
+
+  <body class="m-0 overflow-hidden">
+    <canvas class="h-screen w-screen fixed"></canvas>
+    <div
+      id="loader"
+      class="transition-opacity duration-1000 ease-in-out bg-dark-orange h-screen w-screen absolute z-0 text-8xl grid place-content-center text-center pointer-events-none"
+    >
+      0%
+    </div>
+
+    <div id="modal h-[80vh] w-[80vw] bg-dark-orange">
+      <div>Hello Modal</div>
+    </div>
+    <button class="reset-camera absolute bottom-2 left-2 z-10">
+      Reset Camera (R)
+    </button>
+  </body>
+</html>
