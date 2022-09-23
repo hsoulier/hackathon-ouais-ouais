@@ -110,7 +110,7 @@ document
     gsap.to(camera.position, { x: 15, y: 12, z: 15 })
   )
 document
-  .querySelector(".go-hone")!
+  .querySelector(".go-home")!
   .addEventListener("click", () => (window.location.href = "/"))
 window.addEventListener("click", () => {
   if (currentIntersect) {
