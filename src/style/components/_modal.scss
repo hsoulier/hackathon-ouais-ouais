@@ -9,9 +9,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  // opacity: 0;
-  // visibility: hidden;
-  // pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 
   &.open {
     visibility: visible;
@@ -47,6 +47,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 1rem;
+  }
+  [data-container="personal-wallet"] {
+    .wallet__container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 1rem;
+      color: white;
+    }
   }
   &__close {
     position: fixed;

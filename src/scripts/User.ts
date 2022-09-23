@@ -11,13 +11,11 @@ export default class {
   async getWallet() {
     try {
       const balance = await this.provider.getBalance(this.address)
-      console.log(balance)
-
       const balanceInEth = ethers.utils.formatEther(balance)
       return balanceInEth
     } catch (error) {
       console.error(error)
-      return 0
+      return "0"
     }
   }
 

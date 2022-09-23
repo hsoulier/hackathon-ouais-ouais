@@ -1,3 +1,4 @@
+import "../style/main.scss"
 import { ethers } from "ethers"
 import { Crypto, CryptoList } from "../types"
 import { getUrlCryptoIcon } from "./utils"
@@ -16,6 +17,8 @@ const $templateCardCrypto =
   document.querySelector<HTMLTemplateElement>("#card-crypto")!
 const $templateFormWallet =
   document.querySelector<HTMLTemplateElement>("#form-wallet")!
+const $templateWallet =
+  document.querySelector<HTMLTemplateElement>("#personal-wallet")!
 
 const url = "https://api.alternative.me/v2/ticker/"
 
@@ -56,11 +59,42 @@ const displayCryptoStock = (data: Crypto[]) => {
   $dashboardContent.appendChild($container)
 }
 
+// TODO: Add the content in the page -> table with list transaction, list of crypto (+ maybe conversion in fiat ?)
+// TODO: Button to create a transaction (Look Ethers doc (IN TEST MODE))
+// TODO: Integrate HomePage also (3D model with the doors)
+// ? Inspi -> https://dribbble.com/shots/19195227-Cybersecurity-platform-dashboard
 const getPersonnalWallet = async () => {
   const value = await userMetaMask.getWallet()
   const history = await userMetaMask.getTransactions()
   const { balances } = binanceAccount
 
+  console.log(history)
+
+  document
+    .querySelector("[data-container]")!
+    .removeChild(document.querySelector("form")!)
+  const $container = document.querySelector("[data-container=personal-wallet]")!
+  const clone = document.importNode($templateWallet.content, true)
+
+  console.log(clone.querySelector(".wallet__value"))
+  clone.querySelector(".wallet__value")!.textContent = value + " ETH owned"
+  const $transactionsElement = clone.querySelector(".wallet__transactions")!
+  history.forEach(({ from, to, value, timestamp }) => {
+    $transactionsElement.insertAdjacentHTML(
+      "beforeend",
+      `<div>
+    <div>From ${from}</div>
+    <div>To ${to}</div>
+    <div>${value}</div>
+    <div>${new Date((timestamp as number) * 1000).toLocaleString("en-GB", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    })}</div>
+    </div>`
+    )
+  })
+  $container.appendChild(clone)
   return { value, history, balances }
 }
 

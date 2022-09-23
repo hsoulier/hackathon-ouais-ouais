@@ -85,6 +85,11 @@ const animate = () => {
   const objectsToTest = [bigScreen]
   const intersects = raycaster.intersectObjects(objectsToTest)
   currentIntersect = intersects.length ? intersects[0] : null
+  if (currentIntersect) {
+    document.body.style.cursor = "pointer"
+  } else {
+    document.body.style.cursor = "default"
+  }
   renderer.render(scene, camera)
 }
 const render = () => {

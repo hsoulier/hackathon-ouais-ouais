@@ -12,8 +12,8 @@ const camera = new THREE.PerspectiveCamera(
   1000
 )
 
-const axesHelper = new THREE.AxesHelper(10)
-scene.add(axesHelper)
+// const axesHelper = new THREE.AxesHelper(10)
+// scene.add(axesHelper)
 const light = new THREE.PointLight(0xffe75d, 1, 2000)
 light.position.set(-4.5, 6.5, 2)
 scene.add(light)
