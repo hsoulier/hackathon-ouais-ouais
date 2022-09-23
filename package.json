@@ -23,6 +23,7 @@
   "dependencies": {
     "@binance/connector": "^1.13.0",
     "@splinetool/loader": "^0.9.108",
+    "chart.js": "^3.9.1",
     "ethers": "^5.7.1",
     "gsap": "^3.8.0",
     "three": "^0.144.0"

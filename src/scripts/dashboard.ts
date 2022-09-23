@@ -1,11 +1,10 @@
-import "../style/main.scss"
 import { ethers } from "ethers"
+import binanceAccount from "../../assets/json/binance.json"
 import { Crypto, CryptoList } from "../types"
 import { getUrlCryptoIcon } from "./utils"
-
-// import jsonAccount from "../../assets/json/myAccount.json"
-import binanceAccount from "../../assets/json/binance.json"
+import { drawGraphs } from "./graph"
 import User from "./User"
+import "../style/main.scss"
 
 let userMetaMask: User
 const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -19,6 +18,9 @@ const $templateFormWallet =
   document.querySelector<HTMLTemplateElement>("#form-wallet")!
 const $templateWallet =
   document.querySelector<HTMLTemplateElement>("#personal-wallet")!
+
+const $templateBank =
+  document.querySelector<HTMLTemplateElement>("#bank-infos")!
 
 const url = "https://api.alternative.me/v2/ticker/"
 
@@ -59,16 +61,12 @@ const displayCryptoStock = (data: Crypto[]) => {
   $dashboardContent.appendChild($container)
 }
 
-// TODO: Add the content in the page -> table with list transaction, list of crypto (+ maybe conversion in fiat ?)
 // TODO: Button to create a transaction (Look Ethers doc (IN TEST MODE))
-// TODO: Integrate HomePage also (3D model with the doors)
 // ? Inspi -> https://dribbble.com/shots/19195227-Cybersecurity-platform-dashboard
 const getPersonnalWallet = async () => {
   const value = await userMetaMask.getWallet()
   const history = await userMetaMask.getTransactions()
   const { balances } = binanceAccount
-
-  console.log(history)
 
   document
     .querySelector("[data-container]")!
@@ -77,27 +75,30 @@ const getPersonnalWallet = async () => {
   const clone = document.importNode($templateWallet.content, true)
 
   console.log(clone.querySelector(".wallet__value"))
-  clone.querySelector(".wallet__value")!.textContent = value + " ETH owned"
+  clone.querySelector("h2")!.textContent = value + " ETH"
   const $transactionsElement = clone.querySelector(".wallet__transactions")!
   history.forEach(({ from, to, value, timestamp }) => {
     $transactionsElement.insertAdjacentHTML(
       "beforeend",
-      `<div>
-    <div>From ${from}</div>
-    <div>To ${to}</div>
-    <div>${value}</div>
-    <div>${new Date((timestamp as number) * 1000).toLocaleString("en-GB", {
+      `<tr>
+    <td class="pt-3 px-2"><span>${from}</span></td>
+    <td class="pt-3 px-2"><span>${to}</span></td>
+    <td class="pt-3 px-2 text-center">${ethers.utils.formatEther(
+      value
+    )} ETH</td>
+    <td class="pt-3 px-2">${new Date(
+      (timestamp as number) * 1000
+    ).toLocaleString("en-GB", {
       month: "long",
       day: "numeric",
       year: "numeric",
-    })}</div>
-    </div>`
+    })}</td>
+    </tr>`
     )
   })
   $container.appendChild(clone)
   return { value, history, balances }
 }
-
 const displayPersonnalWallet = () => {
   const $container = document.createElement("div")
   const $title = document.createElement("h1")
@@ -121,6 +122,18 @@ const displayPersonnalWallet = () => {
     })
 }
 
+const displayBankInfos = () => {
+  const $container = document.createElement("div")
+  const $title = document.createElement("h1")
+  $title.textContent = "Bank infos"
+  $container.appendChild($title)
+  $container.dataset.container = "bank-infos"
+  const clone = document.importNode($templateBank.content, true)
+  $container.appendChild(clone)
+  $dashboardContent.appendChild($container)
+  drawGraphs()
+}
+
 $tabLinks.forEach(($link, index) => {
   $link.addEventListener("click", () => {
     $tabLinks.forEach(($inactiveLink, indexToKeep) => {
@@ -138,6 +151,10 @@ $tabLinks.forEach(($link, index) => {
       case 1:
         // getPersonnalWallet().then(() =>
         displayPersonnalWallet()
+        break
+      case 2:
+        // getPersonnalWallet().then(() =>
+        displayBankInfos()
         break
       default:
         break

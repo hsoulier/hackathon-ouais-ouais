@@ -109,6 +109,9 @@ document
   .addEventListener("click", () =>
     gsap.to(camera.position, { x: 15, y: 12, z: 15 })
   )
+document
+  .querySelector(".go-hone")!
+  .addEventListener("click", () => (window.location.href = "/"))
 window.addEventListener("click", () => {
   if (currentIntersect) {
     switch (currentIntersect.object) {

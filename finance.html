@@ -37,8 +37,8 @@
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  stroke-linecap="butt"
+                  stroke-linejoin="arcs"
                 >
                   <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
                   <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
@@ -53,12 +53,24 @@
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  stroke-linecap="butt"
+                  stroke-linejoin="arcs"
                 >
                   <line x1="12" y1="1" x2="12" y2="23"></line>
                   <path
                     d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                  ></path>
+                </svg>
+              </button>
+              <button class="menu-item">
+                <svg
+                  width="32"
+                  height="32"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"
                   ></path>
                 </svg>
               </button>
@@ -85,11 +97,18 @@
       </div>
     </div>
 
-    <button
-      class="rounded-full py-2 px-3 bg-dark-orange text-white border-black reset-camera absolute bottom-2 left-2 z-10"
-    >
-      Reset Camera (R)
-    </button>
+    <div class="absolute bottom-2 left-2 z-10">
+      <button
+        class="rounded-full py-2 px-3 bg-dark-orange text-white border-black reset-camera"
+      >
+        Reset Camera (R)
+      </button>
+      <button
+        class="rounded-full py-2 px-3 bg-dark-orange text-white border-black go-home"
+      >
+        Go Back
+      </button>
+    </div>
 
     <template id="card-crypto">
       <article class="card">
@@ -128,10 +147,47 @@
     <template id="personal-wallet">
       <div class="wallet">
         <div class="wallet__container">
-          <h1>ETH</h1>
-          <p class="wallet__value">Value</p>
-          <p class="wallet__fiat">In Fiat</p>
-          <div class="wallet__transactions"></div>
+          <h2>ETH</h2>
+          <h3>Transactions</h3>
+          <table
+            class="wallet__transactions table-auto w-full border-spacing-y-8"
+          >
+            <thead>
+              <tr>
+                <th class="p-2">From</th>
+                <th class="p-2">To</th>
+                <th class="p-2 text-center">Value</th>
+                <th class="p-2">Date</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </template>
+
+    <template id="bank-infos">
+      <div class="container__dashboard__bank dashboardSettings">
+        <div class="bank__summary grid grid-cols-2 mt-8 gap-12">
+          <div>
+            <canvas id="bank__bars"></canvas>
+          </div>
+          <div>
+            <canvas id="bank__graph"></canvas>
+          </div>
+        </div>
+        <div class="bank__myAccount">
+          <h2>Mes comptes en détails</h2>
+          <table id="tableBank">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Total</th>
+                <th>Monnaie</th>
+                <th>IBAN</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
       </div>
     </template>

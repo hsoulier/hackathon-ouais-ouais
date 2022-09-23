@@ -3,6 +3,8 @@ import gsap from "gsap"
 import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js"
+import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js"
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js"
 
 // HTML Elements
 const canvas = document.querySelector("canvas")!
@@ -26,7 +28,7 @@ const camera = new THREE.PerspectiveCamera(
 // const axesHelper = new THREE.AxesHelper(10)
 // scene.add(axesHelper)
 const ambiantLight = new THREE.AmbientLight(0xffffff, 0.5)
-const pointLight = new THREE.PointLight(0xFF88DC, 0.3)
+const pointLight = new THREE.PointLight(0xff88dc, 0.3)
 const pointLightSecondary = new THREE.PointLight(0x91a6ff, 0.3)
 pointLight.position.set(-3, 20, 0)
 pointLightSecondary.position.set(10, 12, 5)
@@ -54,11 +56,35 @@ loader.load(
 // Elements for raycaster
 const geometry = new THREE.BoxGeometry(3, 6, 2)
 const material = new THREE.MeshBasicMaterial({
+  color: 0xff0000,
   opacity: 0,
   transparent: true,
 })
 const financeDoor = new THREE.Mesh(geometry, material)
 financeDoor.position.set(-1.75, 3, -8.5)
+
+const fontLoader = new FontLoader()
+
+let meshText: THREE.Mesh<TextGeometry, THREE.MeshPhongMaterial>
+fontLoader.load("../../assets/json/clash-display.json", (font) => {
+  const textGeometry = new TextGeometry("Finance Room", {
+    font,
+  })
+  meshText = new THREE.Mesh(
+    textGeometry,
+    new THREE.MeshPhongMaterial({
+      transparent: true,
+      opacity: 0,
+      color: 0x000000,
+      flatShading: true,
+    })
+  )
+  const SCALE = 0.01
+
+  meshText.position.set(-4, 6, -8)
+  meshText.scale.set(SCALE, SCALE, SCALE)
+  scene.add(meshText)
+})
 scene.add(financeDoor)
 
 // renderer
@@ -94,8 +120,14 @@ const animate = () => {
   currentIntersect = intersects.length ? intersects[0] : null
   if (currentIntersect) {
     document.body.style.cursor = "pointer"
+    if (meshText) {
+      gsap.to(meshText.material, { opacity: 1 })
+    }
   } else {
     document.body.style.cursor = "default"
+    if (meshText) {
+      gsap.to(meshText.material, { opacity: 0 })
+    }
   }
   renderer.render(scene, camera)
 }

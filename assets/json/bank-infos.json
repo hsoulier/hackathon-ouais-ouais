@@ -1,0 +1,83 @@
+{
+  "bank-values": [
+    {
+      "id": 123,
+      "name": "Credit Agricole",
+      "number": 212366548,
+      "iban": "FR1221954549412158521",
+      "type": "checking",
+      "balance": 1452.56,
+      "pastbalance": {
+        "19/09/22": 1345.16,
+        "20/09/22": 1400.5,
+        "21/09/22": 900.27
+      },
+      "coming": null,
+      "currency": "EUR",
+      "transactions": {
+        "0": {
+          "lorem ipsum": -16.5,
+          "lorem apsum": 45.06,
+          "lorem epsum": -20.99
+        },
+        "1": {
+          "Lorem Ipmum": 45.89,
+          "Lorem Iasum": -200.16,
+          "Lorem Iesum": 157.12
+        },
+        "2": {
+          "loraem ipsum": -16.5,
+          "loreem ipsum": 45.06,
+          "loredm ipssum": -20.99
+        },
+        "3": {
+          "Lorzem Ipsum": 45.89,
+          "Lorem Ipqsum": -200.16,
+          "Lordem Ipsum": 157.12
+        }
+      }
+    },
+    {
+      "id": 416,
+      "name": "BNP Paribas",
+      "number": 48976516354,
+      "iban": "FR1221954549412158521",
+      "type": "savings",
+      "balance": 1514.83,
+      "pastbalance": {
+        "19/09/22": 1500,
+        "20/09/22": 1000.83,
+        "21/09/22": 1654.83
+      },
+      "coming": null,
+      "currency": "EUR",
+      "transactions": {
+        "0": {
+          "Saving up": 6514.83
+        }
+      }
+    },
+    {
+      "id": 520,
+      "name": "Lydia",
+      "number": 4876513865,
+      "iban": "FR1221954549412158521",
+      "type": "online",
+      "balance": 1000,
+      "pastbalance": {
+        "19/09/22": 0,
+        "20/09/22": 450.23,
+        "21/09/22": 1200.89
+      },
+      "coming": null,
+      "currency": "EUR",
+      "transactions": {
+        "0": {
+          "Lorzem Ipsum": 45.89,
+          "Lorem Ipsdum": -200.16,
+          "Losrem Ipsum": 157.12
+        }
+      }
+    }
+  ]
+}

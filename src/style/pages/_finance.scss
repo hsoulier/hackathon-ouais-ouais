@@ -132,3 +132,13 @@ form {
     text-transform: uppercase;
   }
 }
+
+table {
+  td {
+    max-width: 10ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    span {
+    }
+  }
+}
