@@ -66,7 +66,7 @@ financeDoor.position.set(-1.75, 3, -8.5)
 const fontLoader = new FontLoader()
 
 let meshText: THREE.Mesh<TextGeometry, THREE.MeshPhongMaterial>
-fontLoader.load("../../assets/json/clash-display.json", (font) => {
+fontLoader.load("/clash-display.json", (font) => {
   const textGeometry = new TextGeometry("Finance Room", {
     font,
   })
